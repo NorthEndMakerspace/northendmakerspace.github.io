@@ -40,7 +40,7 @@ gallery_images:
         <div class="carousel-inner">
             {% for image in page.gallery_images %}
             <div class="carousel-item{% if forloop.index0 == 0 %} active{% endif %}">
-                <img src="{{ image | relative_link }}" class="d-block w-100">
+                <img src="{{ image | relative_url }}" class="d-block w-100">
             </div>
             {% endfor %}
         </div>

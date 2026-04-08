@@ -33,7 +33,7 @@ images:
   {% assign index = forloop.index0 | modulo: 3 %}
   {% if index == 0 %}<div class="row">{% endif %}
     <div class="col-md-4 mb-4">
-      <img src="{{ file | relative_link }}" class="img-fluid" alt="instagram caption">
+      <img src="{{ file | relative_url }}" class="img-fluid" alt="instagram caption">
     </div>
     {% if index == 2 or forloop.last %}
   </div>{% endif %}

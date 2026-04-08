@@ -7,23 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <!-- Primary Meta Tags -->
-    <title>{{ page.title }}</title>
-    <meta name="title" content="{{ page.title }}">
-    <meta name="description" content="{{ page.description}}">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 
     <!-- Open Graph / Facebook Linking -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://northendmakers.org/">
-    <meta property="og:title" content="{{ page.title }}">
-    <meta property="og:description" content="{{ page.description}}">
-    <meta property="og:image" content="https://northendmakers.org/images/cardlogowhite.png">
+    <meta property="og:url" content="{{ site.url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    {% if page.description %}<meta property="og:description" content="{{ page.description }}">{% endif %}
+    <meta property="og:image" content="{{ 'images/cardlogowhite.png' | absolute_url }}">
 
     <!-- Twitter Linking -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://northendmakers.org/">
-    <meta property="twitter:title" content="{{ page.title }}">
-    <meta property="twitter:description" content="{{ page.description}}">
-    <meta property="twitter:image" content="https://northendmakers.org/images/cardlogowhite.png">
+    <meta property="twitter:url" content="{{ site.url }}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    {% if page.description %}<meta property="twitter:description" content="{{ page.description }}">{% endif %}
+    <meta property="twitter:image" content="{{ 'images/cardlogowhite.png' | absolute_url }}">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="ltuvW3cOVy0ne3TTZcq3PmnKbgqy8nuLtV97zEemtQU" />
 
