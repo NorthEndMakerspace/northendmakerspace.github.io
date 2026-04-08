@@ -134,7 +134,13 @@ function calculate() {
 	
 	speedRate = Number(speedChoice);
 	numberOfFlutes = Number(flutesChoice);
-	
+
+	// The MillRight forums contains a post that relates the Power Route settings (`machineFactor` == 2) with the Mega V (which does not exist in the calculator). Our copy of this calculator does not specify `machineChoice` so we default to the Power Route configuration.
+	//
+	// See: https://millrightcnc.proboards.com/post/23955/thread
+	// > power route. 1/2 the depth, 40% faster, appox.
+	aggressionFactor *= 0.5;
+	speedRate *= 1.4;
 
 	if (materialChoice === "Aluminum") {
 		if (machineFactor === 2){ 
