@@ -8,8 +8,9 @@ together to learn, share, and grow.'
 <section class="jumbotron text-center mb-4 rounded-0">
   <div class="container">
     <h1 class="jumbotron-heading">Thank You</h1>
-    <p class="lead text-muted">Your contributions help us forward <a href="{{ 'about' | relative_url }}">our mission</a> and allow <a
-        href="{{ 'community' | relative_url }}">our community</a> learn, share, and grow. Below are some ways you can activelycontribute
+    <p class="lead text-muted">Your contributions help us forward <a href="{{ 'about' | relative_url }}">our mission</a>
+      and allow <a href="{{ 'community' | relative_url }}">our community</a> learn, share, and grow. Below are some ways
+      you can activelycontribute
       to North End Makers, followed by some great options for passively supporting us too. <span
         class="text-secondary font-weight-bold">Don't forget!</span> Many employers match funds with employee
       volunteer hours or personal donations. This can be a wonderful way to stretch your time or financial
@@ -20,7 +21,7 @@ together to learn, share, and grow.'
   <div class="row">
     <div class="col-md-4 mb-4">
       <div class="card h-100 box-shadow">
-        <img class="card-img-top" src="images/cardtime.png" alt="Resin 3D print of a roleplaying dice">
+        {% picture images/cardtime.png class="card-img-top" alt="Resin 3D print of a roleplaying dice" %}
         <div class="card-body">
           <h4 class="card-title">Donate Time</h4>
           <p class="card-text">We are always looking for volunteers to help run events, teach classes, help out at the
@@ -36,7 +37,7 @@ together to learn, share, and grow.'
     </div>
     <div class="col-md-4 mb-4">
       <div class="card h-100 box-shadow">
-        <img class="card-img-top" src="images/cardmoney.png" alt="The logo for north end makers">
+        {% picture images/cardmoney.png class="card-img-top" alt="The logo for north end makers" %}
         <div class="card-body">
           <h4 class="card-title">Donate Money</h4>
           <p class="card-text">We offer the ability to make one-time or recurring donations secured through the Paypal
@@ -52,7 +53,7 @@ together to learn, share, and grow.'
     </div>
     <div class="col-md-4 mb-4">
       <div class="card h-100 box-shadow">
-        <img class="card-img-top" src="images/cardequipment.png" alt="A layout of tools of all makes and uses">
+        {% picture images/cardequipment.png class="card-img-top" alt="A layout of tools of all makes and uses" %}
         <div class="card-body">
           <h4 class="card-title">Donate Equipment</h4>
           <p class="card-text">
@@ -81,24 +82,24 @@ together to learn, share, and grow.'
 <div class="container">
   <div class="row">
     <div class="col-md-6 mb-4">
-      <a target=_blank href="https://smile.amazon.com/ch/84-2085281"><img src="images/donatesmile.jpg"
-          class="img-fluid" alt="Support us on Amazon"></a>
+      <a target=_blank href="https://smile.amazon.com/ch/84-2085281">
+        {% picture images/donatesmile.jpg class="img-fluid" alt="Support us on Amazon" %}
     </div>
     <div class="col-md-6 mb-4">
       <a target=_blank
-        href="https://support.humblebundle.com/hc/en-us/articles/210213728-Choose-Your-Own-Charity-Bundle-Promotions"><img
-          src="images/donatehumble.png" class="img-fluid" alt="Support us on Humble Bundle"></a>
+        href="https://support.humblebundle.com/hc/en-us/articles/210213728-Choose-Your-Own-Charity-Bundle-Promotions">
+        {% picture images/donatehumble.png class="img-fluid" alt="Support us on Humble Bundle" %}
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 mb-4">
       <a target=_blank
-        href="https://www.facebook.com/fundraiser/with_presence/create_dialog/?default_beneficiary_type=charity&source=bookmark_hub"><img
-          src="images/donatefb.png" class="img-fluid" alt="Support us on Facebook"></a>
+        href="https://www.facebook.com/fundraiser/with_presence/create_dialog/?default_beneficiary_type=charity&source=bookmark_hub">
+        {% picture images/donatefb.png class="img-fluid" alt="Support us on Facebook" %}
     </div>
     <div class="col-md-6 mb-4">
-      <a target=_blank href="https://www.charity.ebay.com/charity/North-End-Makerspace/3822049"><img
-          src="images/donateebay.png" class="img-fluid" alt="Support us on Ebay"></a>
+      <a target=_blank href="https://www.charity.ebay.com/charity/North-End-Makerspace/3822049">
+        {% picture images/donateebay.png class="img-fluid" alt="Support us on Ebay" %}
     </div>
   </div>
 </div>
@@ -107,8 +108,9 @@ together to learn, share, and grow.'
   <div class="container">
     <h1 class="jumbotron-heading">Questions?</h1>
     <p class="lead text-muted">You can find information about us and our mission as well as contact information on <a
-        href="{{ 'about' | relative_url }}">our about page</a>. You can also check out our various social channels using one of the links
+        href="{{ 'about' | relative_url }}">our about page</a>. You can also check out our various social channels using
+      one of the links
       below.</p>
-      {%- include socials.html -%}
+    {%- include socials.html -%}
   </div>
 </section>

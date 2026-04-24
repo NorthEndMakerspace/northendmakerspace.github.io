@@ -1,0 +1,9 @@
+# Presets for jekyll_picture_tag
+presets:
+  default:
+    formats: [webp, original]
+    widths: [200, 400, 800, 1600]
+    format_quality:
+      png: 90
+      webp: 90
+    strip_metadata: true
