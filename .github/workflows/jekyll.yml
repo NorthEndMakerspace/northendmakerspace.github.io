@@ -53,16 +53,9 @@ jobs:
       - name: Upload artifact to GH pages
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
-      - name: Upload artifact for download
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-preview
-          path: ./_site
 
   # Deployment job
   deploy:
-    # Skip deploy for PR validation
-    if: github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
