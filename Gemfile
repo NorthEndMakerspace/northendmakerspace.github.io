@@ -1,7 +1,20 @@
 source "https://rubygems.org"
 
-# To upgrade, run `bundle update github-pages`.
-gem "github-pages", group: :jekyll_plugins
+gem "jekyll", "~> 4.3"
+
+group :jekyll_plugins do
+  gem "jekyll-feed"
+  gem "jekyll-seo-tag"
+  gem "jekyll-sitemap"
+  gem "jekyll-paginate"
+  gem "jekyll-relative-links"
+  gem "jekyll-redirect-from"
+  gem "jekyll-optional-front-matter"
+  gem "jekyll-readme-index"
+  gem "jekyll-default-layout"
+  gem "jekyll-titles-from-headings"
+  gem "jekyll_picture_tag"
+end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.

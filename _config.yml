@@ -29,9 +29,13 @@ github_username:  NorthEndMakerspace
 
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll_picture_tag
+
+picture:
+  suppress_warnings: true
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -48,6 +52,7 @@ exclude:
   - gemfiles/
   - Gemfile
   - Gemfile.lock
+  - images/
   - node_modules/
   - vendor/bundle/
   - vendor/cache/

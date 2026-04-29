@@ -36,7 +36,7 @@ gallery_images:
         <div class="carousel-inner">
             {% for image in page.gallery_images %}
             <div class="carousel-item{% if forloop.index0 == 0 %} active{% endif %}">
-                <img src="{{ image | relative_url }}" class="d-block w-100">
+                {% picture {{ image }} class="d-block w-100" %}
             </div>
             {% endfor %}
         </div>
@@ -66,7 +66,7 @@ gallery_images:
     <div class="row">
         <div class="col-md-4 mb-4">
             <div class="card h-100 box-shadow">
-                <img class="card-img-top" src="images/carddice.png" alt="Resin 3D print of a roleplaying dice">
+                {% picture images/carddice.png class="card-img-top" alt="Resin 3D print of a roleplaying dice" %}
                 <div class="card-body">
                     <h4 class="card-title">Fast Facts</h4>
                     <div class="card-body">
@@ -85,7 +85,7 @@ gallery_images:
         </div>
         <div class="col-md-4 mb-4">
             <div class="card h-100 box-shadow">
-                <img class="card-img-top" src="images/cardlogo.png" alt="The logo for north end makers">
+                {% picture images/cardlogo.png class="card-img-top" alt="The logo for north end makers" %}
                 <div class="card-body">
                     <h4 class="card-title">What Drives Us</h4>
                     <p class="card-text">Our mission is to provide a friendly, inclusive, and affordable
@@ -102,7 +102,7 @@ gallery_images:
         </div>
         <div class="col-md-4 mb-4">
             <div class="card h-100 box-shadow">
-                <img class="card-img-top" src="images/cardtools.png" alt="A layout of tools of all makes and uses">
+                {% picture images/cardtools.png class="card-img-top" alt="A layout of tools of all makes and uses" %}
                 <div class="card-body">
                     <h4 class="card-title">What We Offer</h4>
                     <p class="card-text">On top of regular classes and events, we offer these tools:
@@ -139,24 +139,24 @@ gallery_images:
 <div class="container">
     <div class="row">
         <div class="col-md-4 mb-4">
-            <img src="images/grams/gram01.png" class="img-fluid" alt="instagram caption">
+            {% picture images/grams/gram01.png class="img-fluid" alt="instagram caption" %}
         </div>
         <div class="col-md-4 mb-4">
-            <img src="images/grams/gram02.png" class="img-fluid" alt="instagram caption">
+            {% picture images/grams/gram02.png class="img-fluid" alt="instagram caption" %}
         </div>
         <div class="col-md-4 mb-4">
-            <img src="images/grams/gram03.png" class="img-fluid" alt="instagram caption">
+            {% picture images/grams/gram03.png class="img-fluid" alt="instagram caption" %}
         </div>
     </div>
     <div class="row">
         <div class="col-md-4 mb-4">
-            <img src="images/grams/gram04.png" class="img-fluid" alt="instagram caption">
+            {% picture images/grams/gram04.png class="img-fluid" alt="instagram caption" %}
         </div>
         <div class="col-md-4 mb-4">
-            <img src="images/grams/gram05.png" class="img-fluid" alt="instagram caption">
+            {% picture images/grams/gram05.png class="img-fluid" alt="instagram caption" %}
         </div>
         <div class="col-md-4 mb-4">
-            <img src="images/grams/gram06.png" class="img-fluid" alt="instagram caption">
+            {% picture images/grams/gram06.png class="img-fluid" alt="instagram caption" %}
         </div>
     </div>
 </div>
