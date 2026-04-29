@@ -96,14 +96,7 @@ Repeat for each changed page. When done, stop the server:
 docker stop jekyll-serve
 ```
 
-### 5 — Do NOT commit screenshots
-
-Screenshots **must never be committed** to the repository. Keeping them
-under `/tmp` (or another path outside the repo) ensures they cannot be
-accidentally staged. Do not add a screenshots directory to `.gitignore`
-— there should be no screenshots directory inside the repo to ignore.
-
-### 6 — Open (or update) the PR
+### 5 — Open (or update) the PR
 
 Create the PR with a description that:
 1. Summarizes the change in one or two sentences.
