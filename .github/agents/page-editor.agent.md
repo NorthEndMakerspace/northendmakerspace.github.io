@@ -15,18 +15,10 @@ each request.
 
 ## Repo structure
 
-This is a [Jekyll](https://jekyllrb.com/) 4 static site. Key facts:
-
-- Page files are in the repository root (e.g. `index.html`, `about.html`,
-  `visit.html`, `join.html`, `pricing.html`, `conduct.html`, `donate.html`,
-  `events.html`, `community.html`, `volunteer.html`, etc.).
-- Shared HTML snippets live in `_includes/`.
-- Page layouts live in `_layouts/`.
-- Site-wide config is `_config.yml`.
-- Images live in `images/` (excluded from the Jekyll build; served from the
-  root).
-- `_data/` holds structured data (YAML/JSON).
-- The build output goes to `_site/` (never commit this directory).
+This is a [Jekyll](https://jekyllrb.com/) 4 static site. Explore the
+repository to discover the current layout — page files, includes,
+layouts, data, images, and config follow standard Jekyll conventions.
+Never commit the Jekyll build output directory.
 
 ---
 
@@ -44,9 +36,9 @@ Read the issue title and body carefully. Identify:
 
 - Edit only the files that must change. Do **not** reformat, re-indent, or
   clean up code in sections you are not changing.
-- Prefer editing a single page file or a shared `_includes/` snippet over
-  touching multiple files when both would satisfy the request.
-- Do not change `_config.yml` unless the issue explicitly asks for a
+- Prefer editing a single page file or a shared include over touching
+  multiple files when both would satisfy the request.
+- Do not change site-wide config unless the issue explicitly asks for a
   site-wide config change.
 
 ### 3 — Build the site
