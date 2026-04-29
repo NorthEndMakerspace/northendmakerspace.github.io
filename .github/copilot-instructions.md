@@ -47,8 +47,8 @@ Read the issue title and body carefully. Identify:
 ### 3 — Build the site
 
 Build using the same `.devcontainer` Dockerfile that production CI uses.
-The setup steps have already built it as `jekyll-build`; if you ever need
-to rebuild it, run:
+First build the image (only needed once per session, or whenever the
+Dockerfile changes):
 
 ```bash
 docker build -t jekyll-build .devcontainer
