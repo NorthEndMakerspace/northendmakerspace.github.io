@@ -123,7 +123,6 @@ Create the PR with a description that:
 ## Style guidelines
 
 - This site uses plain HTML with inline styles; match the surrounding style.
-- Keep copy concise and friendly; match the tone of the existing page text.
 - Only add text when the issue provides the exact copy to use. You may
   fix spelling and grammar issues, but do **not** reword or rephrase
   existing or supplied copy unless the issue explicitly asks for it.
