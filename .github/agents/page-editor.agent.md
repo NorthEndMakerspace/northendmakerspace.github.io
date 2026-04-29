@@ -1,10 +1,15 @@
-# Copilot Agent Instructions
+---
+name: page-editor
+description: Edits pages of the North End Makerspace Jekyll website based on GitHub issue descriptions, making the minimum changes needed and attaching preview screenshots to the PR.
+---
+
+# Page Editor
 
 ## Purpose
 
-This agent edits pages of the North End Makerspace Jekyll website based on
-GitHub issue descriptions. The agent should make the **minimum number of
-changes** needed to satisfy each request.
+You edit pages of the North End Makerspace Jekyll website based on GitHub
+issue descriptions. Make the **minimum number of changes** needed to satisfy
+each request.
 
 ---
 
