@@ -78,15 +78,16 @@ docker run --rm -d --name jekyll-serve \
 ```
 
 Wait a few seconds for the server to start, then take a full-page
-screenshot of every page you changed. Write screenshots to the
-`screenshots/` directory (which is gitignored — see step 5):
+screenshot of every page you changed. Write screenshots **outside the
+repository working tree** — for example under `/tmp` — so they are
+never part of a commit:
 
 ```bash
-mkdir -p screenshots
+mkdir -p /tmp/screenshots
 npx playwright screenshot --browser chromium \
   --full-page \
   http://localhost:4000/<page> \
-  screenshots/<page-name>.png
+  /tmp/screenshots/<page-name>.png
 ```
 
 Repeat for each changed page. When done, stop the server:
@@ -97,9 +98,10 @@ docker stop jekyll-serve
 
 ### 5 — Do NOT commit screenshots
 
-The `screenshots/` directory is listed in `.gitignore` and **must never be
-committed** to the repository. Keep the PNGs only on the agent's local
-filesystem so they can be attached to the PR description in the next step.
+Screenshots **must never be committed** to the repository. Keeping them
+under `/tmp` (or another path outside the repo) ensures they cannot be
+accidentally staged. Do not add a screenshots directory to `.gitignore`
+— there should be no screenshots directory inside the repo to ignore.
 
 ### 6 — Open (or update) the PR
 
