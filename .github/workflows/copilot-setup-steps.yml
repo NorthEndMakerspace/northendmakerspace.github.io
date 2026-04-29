@@ -23,17 +23,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # libvips is required by the jekyll_picture_tag gem used in this site.
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y libvips libvips-dev
+      # Build the same container image used by the production CI workflow
+      # (.github/workflows/jekyll.yml) and by local devcontainer users, so
+      # the agent builds the site exactly the same way.
+      - name: Build devcontainer image
+        run: docker build -t jekyll-build .devcontainer
 
-      - name: Set up Ruby and install gems
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3"
-          bundler-cache: true
+      # Pre-install the site's gems inside the image so the agent does not
+      # have to wait for `bundle install` on first build. Mount the repo so
+      # the resulting vendor/bundle is reused later.
+      - name: Pre-install gems
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/srv/jekyll" \
+            -w /srv/jekyll \
+            jekyll-build \
+            bash -c "bundle config set --local path vendor/bundle && bundle install"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
