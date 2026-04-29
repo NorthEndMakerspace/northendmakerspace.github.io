@@ -113,8 +113,10 @@ filesystem so they can be attached to the PR description in the next step.
 
 Create the PR with a description that:
 1. Summarizes the change in one or two sentences.
-2. Lists the files changed.
-3. Embeds each screenshot inline by **uploading the PNG as an image
+2. Includes a `Fixes: #<issuenumber>` line referencing the issue the PR
+   resolves, so GitHub auto-closes the issue when the PR is merged.
+3. Lists the files changed.
+4. Embeds each screenshot inline by **uploading the PNG as an image
    attachment** in the PR description (GitHub stores attachments under
    `user-attachments` — they are not part of the repo). Do not link to
    raw paths inside the repo, since the screenshots are not committed.
