@@ -27,23 +27,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install libvps
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libvips libvips-dev
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4'
-          bundler-cache: true
-          cache-version: 0
+      - name: Build container image
+        run: docker build -t jekyll-build .devcontainer
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/srv/jekyll" \
+            -w /srv/jekyll \
+            -e JEKYLL_ENV=production \
+            jekyll-build \
+            bash -c "bundle install && bundle exec jekyll build --baseurl '${{ steps.pages.outputs.base_path }}'"
       - name: Upload artifact to GH pages
         uses: actions/upload-pages-artifact@v3
 
