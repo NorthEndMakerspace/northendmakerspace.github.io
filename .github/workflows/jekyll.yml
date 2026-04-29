@@ -48,8 +48,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
 
   deploy:
-    # Skip deploy for PR validation
-    if: github.event_name == 'push'
+    # Only deploy from main branch (push + manual runs)
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
