@@ -27,11 +27,14 @@ url: "https://northendmakers.org"
 twitter_username: northendmakers
 github_username:  NorthEndMakerspace
 
+# Remove the .html extension from URLs
+permalink: pretty
 
 # Build settings
 plugins:
   - jekyll-feed
   - jekyll_picture_tag
+  - jekyll-redirect-from
 
 picture:
   suppress_warnings: true
