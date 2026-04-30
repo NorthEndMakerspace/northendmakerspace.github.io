@@ -26,7 +26,7 @@ Never commit the Jekyll build output directory.
 
 ### 1 — Understand the request
 
-Read the issue title and body carefully. Identify:
+Read the issue title, body, and comments carefully. Identify:
 - Which page(s) need to change.
 - Exactly what text, link, image, or structure should be added, removed, or
   updated.
