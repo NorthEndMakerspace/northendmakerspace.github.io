@@ -1,6 +1,0 @@
-setup:
-  - uses: actions/checkout@v4
-  - name: Build devcontainer
-    uses: devcontainers/ci@v0.3
-    with:
-      runCmd: bundle install
