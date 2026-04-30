@@ -85,9 +85,15 @@ never part of a commit:
 ```bash
 mkdir -p /tmp/screenshots
 npx playwright screenshot --browser chromium \
+  --ignore-https-errors \
   --full-page \
   http://localhost:4000/<page> \
   /tmp/screenshots/<page-name>.png
+```
+
+`--ignore-https-errors` is required: without it, the browser blocks the
+CDN-hosted CSS due to certificate authority errors and the screenshot
+shows an unstyled page.
 ```
 
 Repeat for each changed page. When done, stop the server:
