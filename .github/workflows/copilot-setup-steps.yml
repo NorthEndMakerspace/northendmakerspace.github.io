@@ -16,7 +16,12 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Build devcontainer and install dependencies
-        uses: devcontainers/ci@v0.3
-        with:
-          runCmd: bundle install
+      - name: Build devcontainer image
+        run: docker build -t jekyll-build .devcontainer
+      - name: Install dependencies
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/srv/jekyll" \
+            -w /srv/jekyll \
+            jekyll-build \
+            bundle install

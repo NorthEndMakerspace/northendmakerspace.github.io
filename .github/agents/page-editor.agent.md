@@ -43,18 +43,30 @@ Read the issue title and body carefully. Identify:
 
 ### 3 — Build the site
 
+The `jekyll-build` Docker image is pre-built by `copilot-setup-steps.yml`.
+Use it for all Jekyll commands:
+
 ```bash
-bundle exec jekyll build
+docker run --rm \
+  -v "$PWD:/srv/jekyll" \
+  -w /srv/jekyll \
+  jekyll-build \
+  bundle exec jekyll build
 ```
 
 Fix any build errors before proceeding.
 
 ### 4 — Serve the site and take screenshots
 
-Start the Jekyll dev server in the background:
+Start the Jekyll dev server in a container in the background:
 
 ```bash
-bundle exec jekyll serve --host 0.0.0.0 --no-watch &
+docker run --rm -d --name jekyll-serve \
+  -v "$PWD:/srv/jekyll" \
+  -w /srv/jekyll \
+  -p 4000:4000 \
+  jekyll-build \
+  bundle exec jekyll serve --host 0.0.0.0 --no-watch
 ```
 
 Wait a few seconds for the server to start, then take a full-page
@@ -78,7 +90,7 @@ shows an unstyled page.
 Repeat for each changed page. When done, stop the server:
 
 ```bash
-kill %1
+docker stop jekyll-serve
 ```
 
 ### 5 — Open (or update) the PR
