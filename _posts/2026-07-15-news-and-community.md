@@ -20,7 +20,7 @@ Stay tuned...
 ## Member spotlight
 
 <section class="member-spotlight">
-	{% picture images/posts/2026-07-15-news-and-community/no-bs-meats.png class="float-left-50" alt="No BS Meats market booth materials created with NEM tools" %}
+	{% picture images/posts/2026-07-15-news-and-community/no-bs-meats.png alt="No BS Meats market booth materials created with NEM tools" %}
 
     <p class="mb-0">@AndrewK reports:</p>
 
