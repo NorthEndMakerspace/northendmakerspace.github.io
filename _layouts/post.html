@@ -1,0 +1,219 @@
+---
+layout: base
+---
+<style>
+    .post-shell {
+        background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 35%);
+    }
+
+    .post-header {
+        max-width: 760px;
+        margin: 0 auto 2rem;
+    }
+
+    .post-title {
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.75rem;
+    }
+
+    .post-meta {
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    .post-content {
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.75;
+        color: #343a40;
+    }
+
+    .post-content h2,
+    .post-content h3,
+    .post-content h4 {
+        margin-top: 2.25rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.25;
+        color: #343a40;
+    }
+
+    .post-content p {
+        margin-bottom: 1.05rem;
+    }
+
+    .post-content ul,
+    .post-content ol {
+        margin-bottom: 1.2rem;
+        padding-left: 1.4rem;
+    }
+
+    .post-content li {
+        margin-bottom: 0.45rem;
+    }
+
+    .post-content a {
+        text-underline-offset: 2px;
+    }
+
+    .post-content blockquote {
+        border-left: 4px solid #6c757d;
+        background: #f8f9fa;
+        border-radius: 0.35rem;
+        padding: 1rem 1.1rem;
+        margin: 1.25rem 0;
+    }
+
+    .post-content picture img {
+        max-width: min(100%, 960px);
+        height: auto;
+        border-radius: 0.25rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0.85rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .post-content .member-spotlight {
+        background: #f4ebff;
+        border: 2px dotted #b084db;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .post-content img.float-right-50,
+    .post-content picture.float-right-50 {
+        float: none;
+        width: 100%;
+    }
+
+    .post-nav {
+        max-width: 760px;
+        margin: 2rem auto 0;
+        padding-top: 1.25rem;
+        border-top: 1px solid #dee2e6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .post-nav-side {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .post-nav-link {
+        color: #495057;
+        text-decoration: none;
+        font-size: 0.95rem;
+        display: inline-block;
+    }
+
+    .post-nav-label {
+        display: block;
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-bottom: 0.2rem;
+    }
+
+    .post-nav-title {
+        display: block;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .post-nav-date {
+        display: block;
+        font-size: 0.8rem;
+        color: #6c757d;
+        margin-top: 0.15rem;
+    }
+
+    .post-nav-link:hover,
+    .post-nav-link:focus {
+        text-decoration: underline;
+    }
+
+    .post-nav-right {
+        text-align: right;
+    }
+
+    @media (max-width: 768px) {
+        .post-content {
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+
+        .post-title {
+            letter-spacing: 0;
+        }
+
+        .post-nav {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .post-nav-right {
+            text-align: left;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .post-content img.float-right-50,
+        .post-content picture.float-right-50 {
+            float: right;
+            width: 50%;
+            margin-left: 1rem;
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<section class="jumbotron mb-0 rounded-0 post-shell">
+    <div class="container">
+        <header class="post-header">
+            <h1 class="jumbotron-heading post-title">{{ page.title }}</h1>
+            <p class="post-meta">
+                Posted {{ page.date | date: "%B %-d, %Y" }}
+                {% if page.author %}
+                <span aria-hidden="true">&bull;</span> By {{ page.author }}
+                {% endif %}
+            </p>
+        </header>
+
+        <article class="post-content">
+            {{ content }}
+        </article>
+
+        <nav class="post-nav" aria-label="Post navigation">
+            <div class="post-nav-side">
+                {% if page.previous %}
+                <a class="post-nav-link" href="{{ page.previous.url | relative_url }}">
+                    <span class="post-nav-label">&larr; Older post</span>
+                    <span class="post-nav-title">{{ page.previous.title }}</span>
+                    <span class="post-nav-date">{{ page.previous.date | date: "%B %-d, %Y" }}</span>
+                </a>
+                {% endif %}
+            </div>
+
+            <a class="btn btn-outline-secondary btn-sm" href="{{ 'news' | relative_url }}">Back to all posts</a>
+
+            <div class="post-nav-side post-nav-right">
+                {% if page.next %}
+                <a class="post-nav-link" href="{{ page.next.url | relative_url }}">
+                    <span class="post-nav-label">Newer post &rarr;</span>
+                    <span class="post-nav-title">{{ page.next.title }}</span>
+                    <span class="post-nav-date">{{ page.next.date | date: "%B %-d, %Y" }}</span>
+                </a>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+</section>
