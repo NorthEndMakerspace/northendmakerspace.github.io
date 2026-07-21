@@ -1,0 +1,46 @@
+---
+layout: null
+permalink: /newsletter-html/
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Newsletter HTML</title>
+</head>
+<body>
+    <button id="copy-newsletter" type="button">Copy newsletter HTML</button>
+
+    <div id="newsletter-content">
+        {{ site.posts.first.content }}
+    </div>
+
+    <script>
+        document.getElementById('copy-newsletter').addEventListener('click', async function () {
+            const newsletter = document.getElementById('newsletter-content').cloneNode(true);
+            const siteUrl = '{{ "/" | absolute_url }}';
+
+            newsletter.querySelectorAll('[href]').forEach(function (element) {
+                element.setAttribute('href', new URL(element.getAttribute('href'), siteUrl).href);
+            });
+            newsletter.querySelectorAll('[src]').forEach(function (element) {
+                element.setAttribute('src', new URL(element.getAttribute('src'), siteUrl).href);
+            });
+            newsletter.querySelectorAll('[srcset]').forEach(function (element) {
+                const absoluteSrcset = element.getAttribute('srcset').split(',').map(function (candidate) {
+                    const parts = candidate.trim().split(/\s+/);
+                    parts[0] = new URL(parts[0], siteUrl).href;
+                    return parts.join(' ');
+                }).join(', ');
+                element.setAttribute('srcset', absoluteSrcset);
+            });
+
+            await navigator.clipboard.writeText(newsletter.innerHTML.trim());
+            this.textContent = 'Copied!';
+        });
+    </script>
+</body>
+</html>
