@@ -1,0 +1,42 @@
+---
+layout: base
+title: News
+description: News and newsletters from North End Makerspace.
+---
+
+<section class="jumbotron mb-0 rounded-0" style="background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 45%);">
+  <div class="container" style="max-width: 860px;">
+    <h1 class="jumbotron-heading text-center mb-2">News</h1>
+    <p class="text-muted text-center mb-5">Updates, newsletters, and stories from the North End Makerspace community.</p>
+
+    {% if site.posts and site.posts.size > 0 %}
+    <div>
+      {% for post in site.posts %}
+      <article class="card mb-3 border-0" style="box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08); border-radius: 0.6rem; overflow: hidden;">
+        <div class="card-body p-3 p-md-4">
+          <p class="text-muted mb-2">
+            <small>
+              {{ post.date | date: "%B %-d, %Y" }}
+              {% if post.author %}
+              <span aria-hidden="true">&bull;</span> By {{ post.author }}
+              {% endif %}
+            </small>
+          </p>
+          <h2 class="h4 mb-3">
+            <a href="{{ post.url | relative_url }}" class="text-dark" style="text-decoration-thickness: 2px; text-underline-offset: 3px;">{{ post.title }}</a>
+          </h2>
+          {% if post.description %}
+          <p class="mb-3">{{ post.description }}</p>
+          {% endif %}
+          <a class="btn btn-outline-primary" href="{{ post.url | relative_url }}">Read post</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-light border" role="status">
+      No posts yet. Check back soon.
+    </div>
+    {% endif %}
+  </div>
+</section>
