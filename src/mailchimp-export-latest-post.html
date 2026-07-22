@@ -1,0 +1,251 @@
+---
+permalink: /mailchimp-export-latest-post/
+title: Mailchimp newsletter export
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{{ page.title }}</title>
+    <style>
+        body {
+            background: #f4f4f4;
+            color: #333333;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 24px 12px;
+        }
+
+        .export-toolbar {
+            margin: 0 auto 16px;
+            max-width: 640px;
+        }
+
+        .export-title {
+            font-size: 24px;
+            line-height: 1.25;
+            margin: 0 0 12px;
+        }
+
+        .export-help {
+            margin: 0 0 16px;
+        }
+
+        .copy-button {
+            background: #0069d9;
+            border: 1px solid #0062cc;
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+            padding: 10px 16px;
+        }
+
+        .copy-button:focus,
+        .copy-button:hover {
+            background: #0056b3;
+        }
+
+        .copy-status {
+            margin-left: 10px;
+        }
+
+        #mailchimp-content {
+            background: #ffffff;
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 24px 20px;
+        }
+
+        #mailchimp-content h2,
+        #mailchimp-content h3,
+        #mailchimp-content h4 {
+            color: #333333;
+            line-height: 1.25;
+            margin: 28px 0 12px;
+        }
+
+        #mailchimp-content p {
+            margin: 0 0 16px;
+        }
+
+        #mailchimp-content ul,
+        #mailchimp-content ol {
+            margin: 0 0 18px;
+            padding-left: 24px;
+        }
+
+        #mailchimp-content li {
+            margin-bottom: 7px;
+        }
+
+        #mailchimp-content a {
+            color: #0069d9;
+        }
+
+        #mailchimp-content blockquote {
+            background: #f4f4f4;
+            border-left: 4px solid #777777;
+            margin: 18px 0;
+            padding: 14px 16px;
+        }
+
+        #mailchimp-content img {
+            display: block;
+            height: auto;
+            margin: 14px auto 18px;
+            max-width: 100%;
+        }
+
+        #mailchimp-content img.float-right-50 {
+            float: right;
+            margin: 14px 0 18px 16px;
+            width: 50%;
+        }
+
+        #mailchimp-content img.float-left-50 {
+            float: left;
+            margin: 14px 16px 18px 0;
+            width: 50%;
+        }
+
+        #mailchimp-content .member-spotlight {
+            background: #f4ebff;
+            border: 2px dotted #9b6bc5;
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        #mailchimp-content .text-center {
+            text-align: center;
+        }
+
+        #mailchimp-content .btn {
+            background: #0069d9;
+            border-radius: 4px;
+            color: #ffffff;
+            display: inline-block;
+            font-weight: 700;
+            padding: 12px 20px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            #mailchimp-content img.float-right-50,
+            #mailchimp-content img.float-left-50 {
+                float: none;
+                margin: 14px auto 18px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="export-toolbar">
+        <h1 class="export-title">Export the latest post to Mailchimp</h1>
+        <p class="export-help">Follow <a href="https://mailchimp.com/help/paste-in-html-to-create-an-email/">Mailchimp's Paste in Code instructions</a>, using the button below for the HTML to paste.</p>
+        <button class="copy-button" id="copy-html" type="button">Copy raw HTML</button>
+        <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+    </div>
+
+    <main id="mailchimp-content">
+        {{ site.posts.first.content }}
+    </main>
+
+    <script>
+        (function () {
+            var copyButton = document.getElementById('copy-html');
+            var content = document.getElementById('mailchimp-content');
+            var status = document.getElementById('copy-status');
+            var inlineProperties = [
+                'background-color', 'border', 'border-left', 'border-radius', 'color',
+                'display', 'float', 'font-family', 'font-size', 'font-weight', 'height',
+                'line-height', 'margin', 'margin-bottom', 'margin-left', 'margin-right',
+                'margin-top', 'max-width', 'padding', 'padding-left', 'text-align',
+                'text-decoration', 'width'
+            ];
+
+            function absoluteSrcset(srcset) {
+                return srcset.split(',').map(function (candidate) {
+                    var parts = candidate.trim().split(/\s+/);
+                    parts[0] = new URL(parts[0], document.baseURI).href;
+                    return parts.join(' ');
+                }).join(', ');
+            }
+
+            function exportHtml() {
+                var clone = content.cloneNode(true);
+                var sourceElements = [content].concat(Array.prototype.slice.call(content.querySelectorAll('*')));
+                var cloneElements = [clone].concat(Array.prototype.slice.call(clone.querySelectorAll('*')));
+
+                sourceElements.forEach(function (sourceElement, index) {
+                    var cloneElement = cloneElements[index];
+                    var computedStyle = window.getComputedStyle(sourceElement);
+
+                    inlineProperties.forEach(function (property) {
+                        var value = computedStyle.getPropertyValue(property);
+                        if (value) {
+                            cloneElement.style.setProperty(property, value);
+                        }
+                    });
+
+                    ['href', 'src'].forEach(function (attribute) {
+                        if (cloneElement.hasAttribute(attribute)) {
+                            cloneElement.setAttribute(attribute, new URL(cloneElement.getAttribute(attribute), document.baseURI).href);
+                        }
+                    });
+
+                    if (cloneElement.hasAttribute('srcset')) {
+                        cloneElement.setAttribute('srcset', absoluteSrcset(cloneElement.getAttribute('srcset')));
+                    }
+                });
+
+                clone.querySelectorAll('picture').forEach(function (picture) {
+                    var image = picture.querySelector('img');
+                    if (image) {
+                        if (image.classList.contains('float-right-50')) {
+                            image.setAttribute('align', 'right');
+                        }
+                        if (image.classList.contains('float-left-50')) {
+                            image.setAttribute('align', 'left');
+                        }
+                        picture.replaceWith(image);
+                    }
+                });
+
+                clone.removeAttribute('id');
+                return clone.outerHTML;
+            }
+
+            function fallbackCopy(html) {
+                var textarea = document.createElement('textarea');
+                textarea.value = html;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                textarea.remove();
+            }
+
+            copyButton.addEventListener('click', function () {
+                var html = exportHtml();
+                var copy = navigator.clipboard && window.isSecureContext
+                    ? navigator.clipboard.writeText(html)
+                    : Promise.resolve(fallbackCopy(html));
+
+                copy.then(function () {
+                    status.textContent = 'Copied.';
+                }).catch(function () {
+                    status.textContent = 'Copy failed. Please try again.';
+                });
+            });
+        }());
+    </script>
+</body>
+</html>
