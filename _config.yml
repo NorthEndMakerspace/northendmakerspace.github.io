@@ -31,6 +31,8 @@ github_username:  NorthEndMakerspace
 permalink: pretty
 
 # Build settings
+source: src
+
 plugins:
   - jekyll-feed
   - jekyll_picture_tag
@@ -49,15 +51,4 @@ picture:
 # their entries' file path in the `include:` list.
 #
 exclude:
-  - README.md
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
   - images/
-  - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
